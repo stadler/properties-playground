@@ -7,7 +7,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
   </properties>
 
   <build>
@@ -20,10 +19,44 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.17</version>
+        <configuration>
+          <systemPropertyVariables>
+            <!-- Set JUL Formatting -->
+            <java.util.logging.SimpleFormatter.format>%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$-6s %2$s %5$s%6$s%n</java.util.logging.SimpleFormatter.format>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.joda</groupId>
+        <artifactId>joda-beans-maven-plugin</artifactId>
+        <version>0.7.3</version>
+        <executions>
+          <execution>
+            <id>joda-beans-validate</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <indent>2</indent>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.joda</groupId>
+      <artifactId>joda-beans</artifactId>
+      <version>1.4</version>
+    </dependency>
     <dependency>
       <groupId>com.google.auto.value</groupId>
       <artifactId>auto-value</artifactId>
@@ -40,4 +73,5 @@
       <version>3.0.0</version>
     </dependency>
   </dependencies>
+
 </project>
