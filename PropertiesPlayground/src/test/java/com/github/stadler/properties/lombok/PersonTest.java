@@ -1,5 +1,6 @@
-package com.github.stadler.properties.jodabeans;
+package com.github.stadler.properties.lombok;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.junit.FixMethodOrder;
@@ -11,8 +12,8 @@ public class PersonTest {
 
   @Test
   public void testPerson() {
-    Person person = Person.builder().age(20).firstName("hans").middleName("A", "B").lastName("wurst").build();
-    Person person2 = Person.builder().age(20).firstName("hans").middleName("A", "B").lastName("wurst").build();
+    Person person = new Person("hans", Arrays.asList("A", "B"), "wurst", 20);
+    Person person2 = new Person("hans", Arrays.asList("A", "B"), "wurst", 20);
 
     Logger.getGlobal().info(person.getFirstName());
     Logger.getGlobal().info(person.getLastName());

@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
 
 @AutoValue
-abstract class Person {
+public abstract class Person {
   
   public static Person create(String firstName, List<String> middleName, String lastName, int age) {
     return new AutoValue_Person( firstName, middleName, lastName,  age);
